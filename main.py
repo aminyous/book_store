@@ -14,6 +14,7 @@ Your choice: """
 
 
 def menu():
+    database.create_book_table()
     selection = input(USER_CHOICE).lower()
     while selection != 'q':
         if selection == 'a':
@@ -54,16 +55,13 @@ def list_book():
 
 def prompt_read_book():
     name = input("Enter the book name you just finished reading: ")
-    result = database.read_book(name)
-    if result:
-        print(f"Book name {name} is marked as 'read'")
-    else:
-        print("Book name not found!")
+    database.read_book(name)
 
 
 def prompt_delete_book():
     name = input("Enter the book name to delete: ")
     database.delete_book(name)
+
 
 menu()
 print("*** Good Bye ***")
